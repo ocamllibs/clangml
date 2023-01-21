@@ -12206,6 +12206,24 @@ clang_ext_Decl_getStorageClass_wrapper(value arg_ocaml)
   }
 }
 
+CAMLprim value
+clang_ext_Type_getFieldDecl_wrapper(value arg_ocaml, value arg2_ocaml)
+{
+  CAMLparam2(arg_ocaml, arg2_ocaml);
+  CXType arg;
+  arg = Cxtype_val(Field(arg_ocaml, 0));
+  const char * arg2;
+  arg2 = String_val(arg2_ocaml);
+  CXCursor result = clang_ext_Type_getFieldDecl(arg, arg2);
+  {
+    CAMLlocal1(data);
+    data = caml_alloc_tuple(2);
+  Store_field(data, 0, Val_cxcursor(result));
+  Store_field(data, 1, safe_field(arg_ocaml, 1));
+    CAMLreturn(data);
+  }
+}
+
 enum clang_ext_AArch64SVEPcs_spelling
 Clang_ext_aarch64svepcs_spelling_val(value ocaml)
 {

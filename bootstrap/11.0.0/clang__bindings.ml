@@ -3782,6 +3782,8 @@ type clang_ext_storageclass =
 external ext_decl_get_storage_class :
   cxcursor -> clang_ext_storageclass =
     "clang_ext_Decl_getStorageClass_wrapper"
+external ext_type_get_field_decl :
+  cxtype -> string -> cxcursor = "clang_ext_Type_getFieldDecl_wrapper"
 type clang_ext_aarch64svepcs_spelling =
   | GNU_aarch64_sve_pcs 
   | CXX11_clang_aarch64_sve_pcs 
