@@ -1543,6 +1543,8 @@ external ext_int_get_active_bits :
   cxint -> int = "clang_ext_Int_getActiveBits_wrapper"
 external ext_int_get_min_signed_bits :
   cxint -> int = "clang_ext_Int_getMinSignedBits_wrapper"
+external ext_int_get_significant_bits :
+  cxint -> int = "clang_ext_Int_getSignificantBits_wrapper"
 external ext_int_get_bool_value :
   cxint -> bool = "clang_ext_Int_getBoolValue_wrapper"
 external ext_int_get_zext_value :
@@ -2796,6 +2798,9 @@ type clang_ext_designatedinitexpr_designatorkind =
 external ext_designated_init_expr_get_kind :
   cxcursor -> int -> clang_ext_designatedinitexpr_designatorkind =
     "clang_ext_DesignatedInitExpr_getKind_wrapper"
+external ext_designated_init_expr_get_field_decl :
+  cxcursor -> int -> cxcursor =
+    "clang_ext_DesignatedInitExpr_getFieldDecl_wrapper"
 external ext_designated_init_expr_get_field :
   cxcursor -> int -> cxcursor =
     "clang_ext_DesignatedInitExpr_getField_wrapper"
@@ -3286,6 +3291,14 @@ type clang_ext_availability_spelling =
 external ext_availability_get_spelling :
   cxcursor -> clang_ext_availability_spelling =
     "clang_ext_Availability_getSpelling_wrapper"
+type clang_ext_availableonlyindefaultevalmethod_spelling =
+  | GNU_available_only_in_default_eval_method 
+  | CXX11_clang_available_only_in_default_eval_method 
+  | C2x_clang_available_only_in_default_eval_method 
+  | SpellingNotCalculated [@@deriving refl]
+external ext_available_only_in_default_eval_method_get_spelling :
+  cxcursor -> clang_ext_availableonlyindefaultevalmethod_spelling =
+    "clang_ext_AvailableOnlyInDefaultEvalMethod_getSpelling_wrapper"
 type clang_ext_bpfpreserveaccessindex_spelling =
   | GNU_preserve_access_index 
   | CXX11_clang_preserve_access_index 
@@ -3351,6 +3364,15 @@ type clang_ext_cfconsumed_spelling =
 external ext_cfconsumed_get_spelling :
   cxcursor -> clang_ext_cfconsumed_spelling =
     "clang_ext_CFConsumed_getSpelling_wrapper"
+type clang_ext_cfguard_spelling =
+  | Declspec_guard 
+  | GNU_guard 
+  | CXX11_clang_guard 
+  | C2x_clang_guard 
+  | SpellingNotCalculated [@@deriving refl]
+external ext_cfguard_get_spelling :
+  cxcursor -> clang_ext_cfguard_spelling =
+    "clang_ext_CFGuard_getSpelling_wrapper"
 type clang_ext_cficanonicaljumptable_spelling =
   | GNU_cfi_canonical_jump_table 
   | CXX11_clang_cfi_canonical_jump_table 
@@ -3938,6 +3960,14 @@ type clang_ext_mayalias_spelling =
 external ext_may_alias_get_spelling :
   cxcursor -> clang_ext_mayalias_spelling =
     "clang_ext_MayAlias_getSpelling_wrapper"
+type clang_ext_maybeundef_spelling =
+  | GNU_maybe_undef 
+  | CXX11_clang_maybe_undef 
+  | C2x_clang_maybe_undef 
+  | SpellingNotCalculated [@@deriving refl]
+external ext_maybe_undef_get_spelling :
+  cxcursor -> clang_ext_maybeundef_spelling =
+    "clang_ext_MaybeUndef_getSpelling_wrapper"
 type clang_ext_micromips_spelling =
   | GNU_micromips 
   | CXX11_gnu_micromips 
@@ -4055,6 +4085,14 @@ type clang_ext_nsreturnsretained_spelling =
 external ext_nsreturns_retained_get_spelling :
   cxcursor -> clang_ext_nsreturnsretained_spelling =
     "clang_ext_NSReturnsRetained_getSpelling_wrapper"
+type clang_ext_nvptxkernel_spelling =
+  | GNU_nvptx_kernel 
+  | CXX11_clang_nvptx_kernel 
+  | C2x_clang_nvptx_kernel 
+  | SpellingNotCalculated [@@deriving refl]
+external ext_nvptxkernel_get_spelling :
+  cxcursor -> clang_ext_nvptxkernel_spelling =
+    "clang_ext_NVPTXKernel_getSpelling_wrapper"
 type clang_ext_naked_spelling =
   | GNU_naked 
   | CXX11_gnu_naked 
@@ -4216,6 +4254,7 @@ type clang_ext_nostackprotector_spelling =
   | GNU_no_stack_protector 
   | CXX11_clang_no_stack_protector 
   | C2x_clang_no_stack_protector 
+  | Declspec_safebuffers 
   | SpellingNotCalculated [@@deriving refl]
 external ext_no_stack_protector_get_spelling :
   cxcursor -> clang_ext_nostackprotector_spelling =
@@ -4237,6 +4276,14 @@ type clang_ext_nothrow_spelling =
 external ext_no_throw_get_spelling :
   cxcursor -> clang_ext_nothrow_spelling =
     "clang_ext_NoThrow_getSpelling_wrapper"
+type clang_ext_nouwtable_spelling =
+  | GNU_nouwtable 
+  | CXX11_clang_nouwtable 
+  | C2x_clang_nouwtable 
+  | SpellingNotCalculated [@@deriving refl]
+external ext_no_uwtable_get_spelling :
+  cxcursor -> clang_ext_nouwtable_spelling =
+    "clang_ext_NoUwtable_getSpelling_wrapper"
 type clang_ext_nonnull_spelling =
   | GNU_nonnull 
   | CXX11_gnu_nonnull 
@@ -4717,6 +4764,14 @@ type clang_ext_randomizelayout_spelling =
 external ext_randomize_layout_get_spelling :
   cxcursor -> clang_ext_randomizelayout_spelling =
     "clang_ext_RandomizeLayout_getSpelling_wrapper"
+type clang_ext_readonlyplacement_spelling =
+  | GNU_enforce_read_only_placement 
+  | CXX11_clang_enforce_read_only_placement 
+  | C2x_clang_enforce_read_only_placement 
+  | SpellingNotCalculated [@@deriving refl]
+external ext_read_only_placement_get_spelling :
+  cxcursor -> clang_ext_readonlyplacement_spelling =
+    "clang_ext_ReadOnlyPlacement_getSpelling_wrapper"
 type clang_ext_regcall_spelling =
   | GNU_regcall 
   | CXX11_gnu_regcall 
@@ -4990,6 +5045,14 @@ type clang_ext_targetclones_spelling =
 external ext_target_clones_get_spelling :
   cxcursor -> clang_ext_targetclones_spelling =
     "clang_ext_TargetClones_getSpelling_wrapper"
+type clang_ext_targetversion_spelling =
+  | GNU_target_version 
+  | CXX11_gnu_target_version 
+  | C2x_gnu_target_version 
+  | SpellingNotCalculated [@@deriving refl]
+external ext_target_version_get_spelling :
+  cxcursor -> clang_ext_targetversion_spelling =
+    "clang_ext_TargetVersion_getSpelling_wrapper"
 type clang_ext_testtypestate_spelling =
   | GNU_test_typestate 
   | CXX11_clang_test_typestate 
@@ -5068,6 +5131,14 @@ type clang_ext_unlikely_spelling =
 external ext_unlikely_get_spelling :
   cxcursor -> clang_ext_unlikely_spelling =
     "clang_ext_Unlikely_getSpelling_wrapper"
+type clang_ext_unsafebufferusage_spelling =
+  | GNU_unsafe_buffer_usage 
+  | CXX11_clang_unsafe_buffer_usage 
+  | C2x_clang_unsafe_buffer_usage 
+  | SpellingNotCalculated [@@deriving refl]
+external ext_unsafe_buffer_usage_get_spelling :
+  cxcursor -> clang_ext_unsafebufferusage_spelling =
+    "clang_ext_UnsafeBufferUsage_getSpelling_wrapper"
 type clang_ext_unused_spelling =
   | CXX11_maybe_unused 
   | GNU_unused 
@@ -5343,6 +5414,7 @@ type clang_ext_hlslshaderattr_shadertype =
   | Hull 
   | Domain 
   | Compute 
+  | Library 
   | RayGeneration 
   | Intersection 
   | AnyHit 
@@ -5392,6 +5464,7 @@ external ext_attrs_get_priority :
   cxcursor -> int = "clang_ext_Attrs_getPriority_wrapper"
 type clang_ext_ompdeclaretargetdeclattr_maptypety =
   | To 
+  | Enter 
   | Link [@@deriving refl]
 external ext_ompdeclare_target_decl_attr_get_map_type :
   cxcursor -> clang_ext_ompdeclaretargetdeclattr_maptypety =
@@ -5443,6 +5516,8 @@ external ext_hlslnum_threads_attr_get_z :
   cxcursor -> int = "clang_ext_HLSLNumThreadsAttr_getZ_wrapper"
 external ext_no_sanitize_attr_get_sanitizers_size :
   cxcursor -> int = "clang_ext_NoSanitizeAttr_getSanitizers_Size_wrapper"
+external ext_hlslresource_binding_attr_get_slot_length :
+  cxcursor -> int = "clang_ext_HLSLResourceBindingAttr_getSlotLength_wrapper"
 external ext_callback_attr_get_encoding_size :
   cxcursor -> int = "clang_ext_CallbackAttr_getEncoding_Size_wrapper"
 external ext_attrs_get_xdim :
@@ -5482,6 +5557,8 @@ external ext_uuid_attr_get_guid_length :
 external ext_ompdeclare_simd_decl_attr_get_aligneds_size :
   cxcursor -> int =
     "clang_ext_OMPDeclareSimdDeclAttr_getAligneds_Size_wrapper"
+external ext_hlslresource_binding_attr_get_slot :
+  cxcursor -> string = "clang_ext_HLSLResourceBindingAttr_getSlot_wrapper"
 external ext_attrs_get_message_length :
   cxcursor -> int = "clang_ext_Attrs_getMessageLength_wrapper"
 type clang_ext_pcsattr_pcstype =
@@ -5524,6 +5601,8 @@ external ext_obj_cbridge_related_attr_get_instance_method :
 external ext_ompdeclare_variant_attr_get_adjust_args_need_device_ptr :
   cxcursor -> (cxcursor -> unit) -> unit =
     "clang_ext_OMPDeclareVariantAttr_getAdjustArgsNeedDevicePtr_wrapper"
+external ext_target_version_attr_get_names_str_length :
+  cxcursor -> int = "clang_ext_TargetVersionAttr_getNamesStrLength_wrapper"
 external ext_ompdeclare_simd_decl_attr_get_simdlen :
   cxcursor -> cxcursor =
     "clang_ext_OMPDeclareSimdDeclAttr_getSimdlen_wrapper"
@@ -5580,7 +5659,6 @@ external ext_arminterrupt_attr_get_interrupt :
   cxcursor -> clang_ext_arminterruptattr_interrupttype =
     "clang_ext_ARMInterruptAttr_getInterrupt_wrapper"
 type clang_ext_riscvinterruptattr_interrupttype =
-  | User 
   | Supervisor 
   | Machine [@@deriving refl]
 external ext_riscvinterrupt_attr_get_interrupt :
@@ -5596,6 +5674,16 @@ external ext_enum_extensibility_attr_get_extensibility :
     "clang_ext_EnumExtensibilityAttr_getExtensibility_wrapper"
 external ext_alloc_align_attr_get_param_index :
   cxcursor -> int = "clang_ext_AllocAlignAttr_getParamIndex_wrapper"
+external ext_hlslresource_binding_attr_get_space :
+  cxcursor -> string = "clang_ext_HLSLResourceBindingAttr_getSpace_wrapper"
+type clang_ext_hlslresourceattr_resourceclass =
+  | SRV 
+  | UAV 
+  | CBuffer 
+  | Sampler [@@deriving refl]
+external ext_hlslresource_attr_get_resource_type :
+  cxcursor -> clang_ext_hlslresourceattr_resourceclass =
+    "clang_ext_HLSLResourceAttr_getResourceType_wrapper"
 external ext_diagnose_as_builtin_attr_get_arg_indices_size :
   cxcursor -> int =
     "clang_ext_DiagnoseAsBuiltinAttr_getArgIndices_Size_wrapper"
@@ -5608,6 +5696,10 @@ external ext_attrs_get_alignment :
   cxcursor -> cxcursor = "clang_ext_Attrs_getAlignment_wrapper"
 external ext_address_space_attr_get_address_space :
   cxcursor -> int = "clang_ext_AddressSpaceAttr_getAddressSpace_wrapper"
+type clang_ext_ompinteropinfo
+external ext_ompdeclare_variant_attr_get_append_args :
+  cxcursor -> (clang_ext_ompinteropinfo -> unit) -> unit =
+    "clang_ext_OMPDeclareVariantAttr_getAppendArgs_wrapper"
 external ext_mode_attr_get_mode :
   cxcursor -> string = "clang_ext_ModeAttr_getMode_wrapper"
 external ext_attrs_get_arg :
@@ -5644,6 +5736,9 @@ external ext_init_seg_attr_get_section_length :
 external ext_vec_type_hint_attr_get_type_hint :
   cxcursor -> clang_ext_typeloc =
     "clang_ext_VecTypeHintAttr_getTypeHint_wrapper"
+external ext_ompdeclare_variant_attr_get_append_args_size :
+  cxcursor -> int =
+    "clang_ext_OMPDeclareVariantAttr_getAppendArgs_Size_wrapper"
 external ext_attrs_get_tcbname_length :
   cxcursor -> int = "clang_ext_Attrs_getTCBNameLength_wrapper"
 external ext_ompdeclare_variant_attr_get_adjust_args_nothing_size :
@@ -5655,6 +5750,8 @@ external ext_external_source_symbol_attr_get_language_length :
 external ext_obj_cruntime_name_attr_get_metadata_name_length :
   cxcursor -> int =
     "clang_ext_ObjCRuntimeNameAttr_getMetadataNameLength_wrapper"
+external ext_external_source_symbol_attr_get_usrlength :
+  cxcursor -> int = "clang_ext_ExternalSourceSymbolAttr_getUSRLength_wrapper"
 type clang_ext_consumableattr_consumedstate =
   | Unknown 
   | Consumed 
@@ -5794,6 +5891,9 @@ type clang_ext_ompallocatedeclattr_allocatortypety =
 external ext_ompallocate_decl_attr_get_allocator_type :
   cxcursor -> clang_ext_ompallocatedeclattr_allocatortypety =
     "clang_ext_OMPAllocateDeclAttr_getAllocatorType_wrapper"
+external ext_hlslresource_binding_attr_get_space_length :
+  cxcursor -> int =
+    "clang_ext_HLSLResourceBindingAttr_getSpaceLength_wrapper"
 external ext_attrs_get_name_length :
   cxcursor -> int = "clang_ext_Attrs_getNameLength_wrapper"
 external ext_attrs_get_name :
@@ -5816,6 +5916,10 @@ external ext_attrs_get_cond :
 external ext_iboutlet_collection_attr_get_interface :
   cxcursor -> clang_ext_typeloc =
     "clang_ext_IBOutletCollectionAttr_getInterface_wrapper"
+external ext_external_source_symbol_attr_get_usr :
+  cxcursor -> string = "clang_ext_ExternalSourceSymbolAttr_getUSR_wrapper"
+external ext_target_version_attr_get_names_str :
+  cxcursor -> string = "clang_ext_TargetVersionAttr_getNamesStr_wrapper"
 type clang_ext_objcmethodfamilyattr_familykind =
   | None 
   | Alloc 

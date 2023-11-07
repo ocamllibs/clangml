@@ -283,6 +283,14 @@ clang_ext_Availability_SpellingNotCalculated};
 enum
 clang_ext_Availability_spelling clang_ext_Availability_getSpelling(
 CXCursor cursor);
+enum clang_ext_AvailableOnlyInDefaultEvalMethod_spelling {
+clang_ext_AvailableOnlyInDefaultEvalMethod_GNU_available_only_in_default_eval_method,
+clang_ext_AvailableOnlyInDefaultEvalMethod_CXX11_clang_available_only_in_default_eval_method,
+clang_ext_AvailableOnlyInDefaultEvalMethod_C2x_clang_available_only_in_default_eval_method,
+clang_ext_AvailableOnlyInDefaultEvalMethod_SpellingNotCalculated};
+enum
+clang_ext_AvailableOnlyInDefaultEvalMethod_spelling
+clang_ext_AvailableOnlyInDefaultEvalMethod_getSpelling(CXCursor cursor);
 enum clang_ext_BPFPreserveAccessIndex_spelling {
 clang_ext_BPFPreserveAccessIndex_GNU_preserve_access_index,
 clang_ext_BPFPreserveAccessIndex_CXX11_clang_preserve_access_index,
@@ -348,6 +356,14 @@ clang_ext_CFConsumed_spelling clang_ext_CFConsumed_getSpelling(
 CXCursor cursor);
 enum clang_ext_CFGuardAttr_GuardArg {
 clang_ext_CFGuardAttr_GuardArg_nocf};
+enum clang_ext_CFGuard_spelling {
+clang_ext_CFGuard_Declspec_guard,
+clang_ext_CFGuard_GNU_guard,
+clang_ext_CFGuard_CXX11_clang_guard,
+clang_ext_CFGuard_C2x_clang_guard,
+clang_ext_CFGuard_SpellingNotCalculated};
+enum
+clang_ext_CFGuard_spelling clang_ext_CFGuard_getSpelling(CXCursor cursor);
 enum clang_ext_CFICanonicalJumpTable_spelling {
 clang_ext_CFICanonicalJumpTable_GNU_cfi_canonical_jump_table,
 clang_ext_CFICanonicalJumpTable_CXX11_clang_cfi_canonical_jump_table,
@@ -770,6 +786,11 @@ clang_ext_HIPManaged_SpellingNotCalculated};
 enum
 clang_ext_HIPManaged_spelling clang_ext_HIPManaged_getSpelling(
 CXCursor cursor);
+enum clang_ext_HLSLResourceAttr_ResourceClass {
+clang_ext_HLSLResourceAttr_ResourceClass_SRV,
+clang_ext_HLSLResourceAttr_ResourceClass_UAV,
+clang_ext_HLSLResourceAttr_ResourceClass_CBuffer,
+clang_ext_HLSLResourceAttr_ResourceClass_Sampler};
 enum clang_ext_HLSLShaderAttr_ShaderType {
 clang_ext_HLSLShaderAttr_ShaderType_Pixel,
 clang_ext_HLSLShaderAttr_ShaderType_Vertex,
@@ -777,6 +798,7 @@ clang_ext_HLSLShaderAttr_ShaderType_Geometry,
 clang_ext_HLSLShaderAttr_ShaderType_Hull,
 clang_ext_HLSLShaderAttr_ShaderType_Domain,
 clang_ext_HLSLShaderAttr_ShaderType_Compute,
+clang_ext_HLSLShaderAttr_ShaderType_Library,
 clang_ext_HLSLShaderAttr_ShaderType_RayGeneration,
 clang_ext_HLSLShaderAttr_ShaderType_Intersection,
 clang_ext_HLSLShaderAttr_ShaderType_AnyHit,
@@ -942,6 +964,14 @@ clang_ext_MayAlias_C2x_gnu_may_alias,
 clang_ext_MayAlias_SpellingNotCalculated};
 enum
 clang_ext_MayAlias_spelling clang_ext_MayAlias_getSpelling(CXCursor cursor);
+enum clang_ext_MaybeUndef_spelling {
+clang_ext_MaybeUndef_GNU_maybe_undef,
+clang_ext_MaybeUndef_CXX11_clang_maybe_undef,
+clang_ext_MaybeUndef_C2x_clang_maybe_undef,
+clang_ext_MaybeUndef_SpellingNotCalculated};
+enum
+clang_ext_MaybeUndef_spelling clang_ext_MaybeUndef_getSpelling(
+CXCursor cursor);
 enum clang_ext_MicroMips_spelling {
 clang_ext_MicroMips_GNU_micromips,
 clang_ext_MicroMips_CXX11_gnu_micromips,
@@ -1062,6 +1092,14 @@ clang_ext_NSReturnsRetained_C2x_clang_ns_returns_retained,
 clang_ext_NSReturnsRetained_SpellingNotCalculated};
 enum
 clang_ext_NSReturnsRetained_spelling clang_ext_NSReturnsRetained_getSpelling(
+CXCursor cursor);
+enum clang_ext_NVPTXKernel_spelling {
+clang_ext_NVPTXKernel_GNU_nvptx_kernel,
+clang_ext_NVPTXKernel_CXX11_clang_nvptx_kernel,
+clang_ext_NVPTXKernel_C2x_clang_nvptx_kernel,
+clang_ext_NVPTXKernel_SpellingNotCalculated};
+enum
+clang_ext_NVPTXKernel_spelling clang_ext_NVPTXKernel_getSpelling(
 CXCursor cursor);
 enum clang_ext_Naked_spelling {
 clang_ext_Naked_GNU_naked,
@@ -1212,6 +1250,7 @@ enum clang_ext_NoStackProtector_spelling {
 clang_ext_NoStackProtector_GNU_no_stack_protector,
 clang_ext_NoStackProtector_CXX11_clang_no_stack_protector,
 clang_ext_NoStackProtector_C2x_clang_no_stack_protector,
+clang_ext_NoStackProtector_Declspec_safebuffers,
 clang_ext_NoStackProtector_SpellingNotCalculated};
 enum
 clang_ext_NoStackProtector_spelling clang_ext_NoStackProtector_getSpelling(
@@ -1232,6 +1271,13 @@ clang_ext_NoThrow_Declspec_nothrow,
 clang_ext_NoThrow_SpellingNotCalculated};
 enum
 clang_ext_NoThrow_spelling clang_ext_NoThrow_getSpelling(CXCursor cursor);
+enum clang_ext_NoUwtable_spelling {
+clang_ext_NoUwtable_GNU_nouwtable,
+clang_ext_NoUwtable_CXX11_clang_nouwtable,
+clang_ext_NoUwtable_C2x_clang_nouwtable,
+clang_ext_NoUwtable_SpellingNotCalculated};
+enum
+clang_ext_NoUwtable_spelling clang_ext_NoUwtable_getSpelling(CXCursor cursor);
 enum clang_ext_NonNull_spelling {
 clang_ext_NonNull_GNU_nonnull,
 clang_ext_NonNull_CXX11_gnu_nonnull,
@@ -1264,6 +1310,7 @@ clang_ext_OMPDeclareSimdDeclAttr_BranchStateTy_BS_Inbranch,
 clang_ext_OMPDeclareSimdDeclAttr_BranchStateTy_BS_Notinbranch};
 enum clang_ext_OMPDeclareTargetDeclAttr_MapTypeTy {
 clang_ext_OMPDeclareTargetDeclAttr_MapTypeTy_MT_To,
+clang_ext_OMPDeclareTargetDeclAttr_MapTypeTy_MT_Enter,
 clang_ext_OMPDeclareTargetDeclAttr_MapTypeTy_MT_Link};
 enum clang_ext_OSConsumed_spelling {
 clang_ext_OSConsumed_GNU_os_consumed,
@@ -1719,7 +1766,6 @@ clang_ext_Pure_C2x_gnu_pure,
 clang_ext_Pure_SpellingNotCalculated};
 enum clang_ext_Pure_spelling clang_ext_Pure_getSpelling(CXCursor cursor);
 enum clang_ext_RISCVInterruptAttr_InterruptType {
-clang_ext_RISCVInterruptAttr_InterruptType_user,
 clang_ext_RISCVInterruptAttr_InterruptType_supervisor,
 clang_ext_RISCVInterruptAttr_InterruptType_machine};
 enum clang_ext_RISCVInterrupt_spelling {
@@ -1737,6 +1783,14 @@ clang_ext_RandomizeLayout_C2x_gnu_randomize_layout,
 clang_ext_RandomizeLayout_SpellingNotCalculated};
 enum
 clang_ext_RandomizeLayout_spelling clang_ext_RandomizeLayout_getSpelling(
+CXCursor cursor);
+enum clang_ext_ReadOnlyPlacement_spelling {
+clang_ext_ReadOnlyPlacement_GNU_enforce_read_only_placement,
+clang_ext_ReadOnlyPlacement_CXX11_clang_enforce_read_only_placement,
+clang_ext_ReadOnlyPlacement_C2x_clang_enforce_read_only_placement,
+clang_ext_ReadOnlyPlacement_SpellingNotCalculated};
+enum
+clang_ext_ReadOnlyPlacement_spelling clang_ext_ReadOnlyPlacement_getSpelling(
 CXCursor cursor);
 enum clang_ext_RegCall_spelling {
 clang_ext_RegCall_GNU_regcall,
@@ -2024,6 +2078,14 @@ clang_ext_TargetClones_SpellingNotCalculated};
 enum
 clang_ext_TargetClones_spelling clang_ext_TargetClones_getSpelling(
 CXCursor cursor);
+enum clang_ext_TargetVersion_spelling {
+clang_ext_TargetVersion_GNU_target_version,
+clang_ext_TargetVersion_CXX11_gnu_target_version,
+clang_ext_TargetVersion_C2x_gnu_target_version,
+clang_ext_TargetVersion_SpellingNotCalculated};
+enum
+clang_ext_TargetVersion_spelling clang_ext_TargetVersion_getSpelling(
+CXCursor cursor);
 enum clang_ext_TestTypestateAttr_ConsumedState {
 clang_ext_TestTypestateAttr_ConsumedState_Consumed,
 clang_ext_TestTypestateAttr_ConsumedState_Unconsumed};
@@ -2107,6 +2169,14 @@ clang_ext_Unlikely_C2x_clang_unlikely,
 clang_ext_Unlikely_SpellingNotCalculated};
 enum
 clang_ext_Unlikely_spelling clang_ext_Unlikely_getSpelling(CXCursor cursor);
+enum clang_ext_UnsafeBufferUsage_spelling {
+clang_ext_UnsafeBufferUsage_GNU_unsafe_buffer_usage,
+clang_ext_UnsafeBufferUsage_CXX11_clang_unsafe_buffer_usage,
+clang_ext_UnsafeBufferUsage_C2x_clang_unsafe_buffer_usage,
+clang_ext_UnsafeBufferUsage_SpellingNotCalculated};
+enum
+clang_ext_UnsafeBufferUsage_spelling clang_ext_UnsafeBufferUsage_getSpelling(
+CXCursor cursor);
 enum clang_ext_Unused_spelling {
 clang_ext_Unused_CXX11_maybe_unused,
 clang_ext_Unused_GNU_unused,
@@ -2377,6 +2447,7 @@ clang_ext_SwiftNewTypeAttr_NewtypeKind
 clang_ext_SwiftNewTypeAttr_getNewtypeKind(CXCursor cursor);
 int clang_ext_HLSLNumThreadsAttr_getZ(CXCursor cursor);
 unsigned int clang_ext_NoSanitizeAttr_getSanitizers_Size(CXCursor cursor);
+unsigned int clang_ext_HLSLResourceBindingAttr_getSlotLength(CXCursor cursor);
 unsigned int clang_ext_CallbackAttr_getEncoding_Size(CXCursor cursor);
 unsigned int clang_ext_Attrs_getXDim(CXCursor cursor);
 CXCursor clang_ext_UuidAttr_getGuidDecl(CXCursor cursor);
@@ -2400,6 +2471,7 @@ bool clang_ext_ArgumentWithTypeTagAttr_getIsPointer(CXCursor cursor);
 unsigned int clang_ext_UuidAttr_getGuidLength(CXCursor cursor);
 unsigned int clang_ext_OMPDeclareSimdDeclAttr_getAligneds_Size(
 CXCursor cursor);
+CXString clang_ext_HLSLResourceBindingAttr_getSlot(CXCursor cursor);
 unsigned int clang_ext_Attrs_getMessageLength(CXCursor cursor);
 enum clang_ext_PcsAttr_PCSType clang_ext_PcsAttr_getPCS(CXCursor cursor);
 void clang_ext_CallbackAttr_getEncoding(
@@ -2421,6 +2493,7 @@ unsigned int clang_ext_AMDGPUNumSGPRAttr_getNumSGPR(CXCursor cursor);
 CXString clang_ext_ObjCBridgeRelatedAttr_getInstanceMethod(CXCursor cursor);
 void clang_ext_OMPDeclareVariantAttr_getAdjustArgsNeedDevicePtr(
 CXCursor cursor, void (*callback_value)(CXCursor , void *), void *data);
+unsigned int clang_ext_TargetVersionAttr_getNamesStrLength(CXCursor cursor);
 CXCursor clang_ext_OMPDeclareSimdDeclAttr_getSimdlen(CXCursor cursor);
 unsigned int clang_ext_TargetAttr_getFeaturesStrLength(CXCursor cursor);
 CXCursor clang_ext_AlignedAttr_getAlignmentExpr(CXCursor cursor);
@@ -2448,6 +2521,10 @@ enum
 clang_ext_EnumExtensibilityAttr_Kind
 clang_ext_EnumExtensibilityAttr_getExtensibility(CXCursor cursor);
 unsigned int clang_ext_AllocAlignAttr_getParamIndex(CXCursor cursor);
+CXString clang_ext_HLSLResourceBindingAttr_getSpace(CXCursor cursor);
+enum
+clang_ext_HLSLResourceAttr_ResourceClass
+clang_ext_HLSLResourceAttr_getResourceType(CXCursor cursor);
 unsigned int clang_ext_DiagnoseAsBuiltinAttr_getArgIndices_Size(
 CXCursor cursor);
 struct
@@ -2456,6 +2533,9 @@ CXCursor cursor);
 unsigned int clang_ext_MaxFieldAlignmentAttr_getAlignment(CXCursor cursor);
 CXCursor clang_ext_Attrs_getAlignment(CXCursor cursor);
 int clang_ext_AddressSpaceAttr_getAddressSpace(CXCursor cursor);
+void clang_ext_OMPDeclareVariantAttr_getAppendArgs(
+CXCursor cursor,
+void (*callback_value)(struct clang_ext_OMPInteropInfo , void *), void *data);
 CXString clang_ext_ModeAttr_getMode(CXCursor cursor);
 CXCursor clang_ext_Attrs_getArg(CXCursor cursor);
 void clang_ext_Attrs_getCpus(
@@ -2477,6 +2557,8 @@ CXCursor cursor, void (*callback_value)(CXCursor , void *), void *data);
 unsigned int clang_ext_InitSegAttr_getSectionLength(CXCursor cursor);
 struct
 clang_ext_TypeLoc clang_ext_VecTypeHintAttr_getTypeHint(CXCursor cursor);
+unsigned int clang_ext_OMPDeclareVariantAttr_getAppendArgs_Size(
+CXCursor cursor);
 unsigned int clang_ext_Attrs_getTCBNameLength(CXCursor cursor);
 unsigned int clang_ext_OMPDeclareVariantAttr_getAdjustArgsNothing_Size(
 CXCursor cursor);
@@ -2484,6 +2566,7 @@ unsigned int clang_ext_ExternalSourceSymbolAttr_getLanguageLength(
 CXCursor cursor);
 unsigned int clang_ext_ObjCRuntimeNameAttr_getMetadataNameLength(
 CXCursor cursor);
+unsigned int clang_ext_ExternalSourceSymbolAttr_getUSRLength(CXCursor cursor);
 enum
 clang_ext_ConsumableAttr_ConsumedState
 clang_ext_ConsumableAttr_getDefaultState(CXCursor cursor);
@@ -2544,6 +2627,8 @@ bool clang_ext_TypeTagForDatatypeAttr_getMustBeNull(CXCursor cursor);
 enum
 clang_ext_OMPAllocateDeclAttr_AllocatorTypeTy
 clang_ext_OMPAllocateDeclAttr_getAllocatorType(CXCursor cursor);
+unsigned int clang_ext_HLSLResourceBindingAttr_getSpaceLength(
+CXCursor cursor);
 unsigned int clang_ext_Attrs_getNameLength(CXCursor cursor);
 CXString clang_ext_Attrs_getName(CXCursor cursor);
 unsigned int clang_ext_SuppressAttr_getDiagnosticIdentifiers_Size(
@@ -2558,6 +2643,8 @@ CXCursor clang_ext_Attrs_getCond(CXCursor cursor);
 struct
 clang_ext_TypeLoc clang_ext_IBOutletCollectionAttr_getInterface(
 CXCursor cursor);
+CXString clang_ext_ExternalSourceSymbolAttr_getUSR(CXCursor cursor);
+CXString clang_ext_TargetVersionAttr_getNamesStr(CXCursor cursor);
 enum
 clang_ext_ObjCMethodFamilyAttr_FamilyKind
 clang_ext_ObjCMethodFamilyAttr_getFamily(CXCursor cursor);
