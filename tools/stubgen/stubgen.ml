@@ -1987,7 +1987,7 @@ let main cflags llvm_config prefix =
     | _ -> "clang_free" in
   let module_interface =
     empty_module_interface |>
-    add_function (Pcre.regexp "^(?!clang_)|clang_getCString|^clang.*_dispose|^clang_free$|constructUSR|^clang_executeOnThread$|^clang_getDiagnosticCategoryName$|^clang_getDefinitionSpellingAndExtent$|^clang_getToken$|^clang_tokenize$|^clang_annotateTokens$|^clang_.*WithBlock$|^clang_getCursorPlatformAvailability$|^clang_codeComplete|^clang_sortCodeCompletionResults$|^clang_getCompletion(NumFixIts|FixIt)$|^clang_getInclusions$|^clang_remap_getFilenames$|^clang_index.*$|^clang_find(References|Includes)InFile$|^clang_Cursor_getTranslationUnit$|^clang_ext_hash_cursor$|^clang_ext_compare_cursor$") hidden_function_interface |>
+    add_function (Pcre.regexp "^(?!clang_)|clang_getCString|^clang.*_dispose|^clang_free$|constructUSR|^clang_executeOnThread$|^clang_getDiagnosticCategoryName$|^clang_getDefinitionSpellingAndExtent$|^clang_getToken$|^clang_tokenize$|^clang_annotateTokens$|^clang_.*WithBlock$|^clang_getCursorPlatformAvailability$|^clang_codeComplete|^clang_sortCodeCompletionResults$|^clang_getCompletion(NumFixIts|FixIt)$|^clang_getInclusions$|^clang_remap_getFilenames$|^clang_index.*$|^clang_find(References|Includes)InFile$|^clang_Cursor_getTranslationUnit$|^clang_ext_hash_cursor$|^clang_ext_compare_cursor$|^clang_createIndexWithOptions$") hidden_function_interface |>
     add_type (Pcre.regexp "^CXString$")
       (empty_type_interface |>
        reinterpret_as (Type_info ({ ocamltype = ocaml_string;
