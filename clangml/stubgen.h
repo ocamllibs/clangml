@@ -8,7 +8,6 @@
 #include <sys/types.h>
 #include <unistd.h>
 #include <string.h>
-#include <stdcompat.h>
 #include <stdio.h> /* vsnprintf */
 
 /* Transitory */
