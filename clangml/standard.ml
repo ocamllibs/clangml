@@ -181,7 +181,7 @@ let to_clang : t -> Clang__bindings.clang_ext_langstandards = function
         Openclcpp2021]
       else [%expr
         raise (Unavailable Openclcpp2021)]]
-  | Cuda -> 
+  | Cuda ->
       [%meta if Clangml_config.version.major >= 17 then [%expr
         raise (Unavailable Cuda)]
       else [%expr
